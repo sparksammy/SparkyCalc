@@ -1,0 +1,52 @@
+<head>
+<style>
+
+</style>
+<script>
+    const { writefile } = require('fs');
+    var prevFormula = ""
+    tray = new Tray('icon.ico')
+    tray.setTooltip('SparkyCalc v1.0')
+    function cls() {
+        document.getElementById("qa").innerHTML = ""
+    }
+
+    function del() {
+        document.getElementById("qa").innerHTML = document.getElementById("qa").innerHTML.slice(0,-1)
+    }
+
+    function input(c) {
+        try { 
+            if (c == '=') {
+                prevFormula = document.getElementById("qa").innerHTML
+                document.getElementById("qa").innerHTML = eval(document.getElementById("qa").innerHTML)
+            } else if (c == 'endp') {
+                document.getElementById("qa").innerHTML += ")"
+            } else if (c == 'bp') {
+                document.getElementById("qa").innerHTML += "("
+            } else {
+                //Add character to textbox
+                document.getElementById("qa").innerHTML += c
+            }
+        } finally {
+            //Do nothing
+        }
+        window.onerror = function() {
+            document.getElementById("qa").innerHTML = "Error"
+        }
+    }
+</script>
+</head>
+<body>
+    <p><i><b id="qa"></b></i></p> <td><button type="button" onclick="cls()">CLS</button> <button type="button" onclick="del()">DEL</button> <br>
+    <button type="button" onclick="input(1)">1</button> <button type="button" onclick="input(2)">2</button><button type="button" onclick="input(3)">3</button><br>  
+    <button type="button" onclick="input(4)">4</button> <button type="button" onclick="input(5)">5</button><button type="button" onclick="input(6)">6</button><br>
+    <button type="button" onclick="input(7)">7</button> <button type="button" onclick="input(8)">8</button><button type="button" onclick="input(9)">9</button><br>
+    <button type="button" onclick="input(0)">0</button>
+    <button type="button" onclick="input('+')">+</button><button type="button" onclick="input('-')">-</button><br>
+    <button type="button" onclick="input('*')">*</button><button type="button" onclick="input('/')">/</button>
+    <button type="button" onclick="input('Math.pow')">pow(</button><button type="button" onclick="input(',')">,</button><br>
+    <button type="button" onclick="input('=')">=</button><button type="button" onclick="input('bp')">(</button><button type="button" onclick="input('endp')">)</button>
+    <hr>
+    <p>Copyright Samuel Lord.<br> Licensed under the <a href="/LICENSE">MIT license.</a></p>
+</body>

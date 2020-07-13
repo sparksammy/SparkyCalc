@@ -1,0 +1,22 @@
+{
+  "name": "SparkyCalc",
+  "version": "1.0.0",
+  "description": "A FOSS JS equation calculator and creator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"OK: no test specified\" && exit 1",
+    "start": "electron .",
+    "make": "electron-forge make"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^9.1.0",
+    "electron-builder": "^22.7.0",
+    "electron-prebuilt-compile": "8.2.0"
+  },
+  "dependencies": {
+    "electron-prebuilt-compile": "^8.2.0"
+  }
+}
